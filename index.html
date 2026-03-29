@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunil Prashara - Builder of Institutions</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b2e28'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%233da67a' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#1b2e28;
+--navy-light:#2d4a3e;
+--gold:#2e7d5b;
+--gold-dark:#1e6b48;
+--gold-soft:rgba(46,125,91,0.07);
+--gold-border:rgba(46,125,91,0.18);
+--accent:#3da67a;
+--accent-light:#e8f5ef;
+--accent-pale:#f0f9f4;
+--hero-bg:linear-gradient(165deg,#f0f9f4 0%,#ffffff 40%,#f7faf8 100%);
+--band-green:#f3faf6;
+--band-deep:#eaf5ef;
+--white:#ffffff;
+--off-white:#fafbf9;
+--bg-section:#f4f7f5;
+--text-primary:#1b2e28;
+--text-secondary:#4a5e56;
+--text-muted:#7e948b;
+--border:#dfe8e3;
+--border-light:#edf2ee;
+--shadow-sm:0 1px 3px rgba(0,0,0,0.04);
+--shadow-md:0 4px 12px rgba(0,0,0,0.06);
+--shadow-lg:0 8px 30px rgba(0,0,0,0.08);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--white);color:var(--text-primary);line-height:1.65;overflow-x:hidden}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--off-white)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* Navigation */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0;background:var(--white);border-bottom:1px solid var(--border);transition:all 0.3s}
+.nav.scrolled{box-shadow:var(--shadow-sm)}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0.7rem 2rem}
+.nav-brand{font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;color:var(--navy);font-weight:700;letter-spacing:0.3px}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:0.15rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;mask-image:linear-gradient(to right,black 88%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 88%,transparent 100%)}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links.scrolled-end{mask-image:linear-gradient(to left,black 88%,transparent 100%);-webkit-mask-image:linear-gradient(to left,black 88%,transparent 100%)}
+.nav-links.scrolled-mid{mask-image:linear-gradient(to right,transparent 0%,black 8%,black 88%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 88%,transparent 100%)}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.35rem 0.7rem;border-radius:6px;white-space:nowrap;transition:all 0.2s;cursor:pointer;font-weight:500;letter-spacing:0.2px}
+.nav-links a:hover{color:var(--text-primary);background:var(--bg-section)}
+.nav-links a.active{color:var(--gold-dark);background:var(--gold-soft);font-weight:600}
+
+/* Sections */
+.section{display:none;min-height:calc(100vh - 52px);padding:5rem 2rem 3rem}
+.section.visible{display:block;animation:fadeUp 0.35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.container{max-width:1060px;margin:0 auto}
+
+/* Section headers */
+.section-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);margin-bottom:0.6rem;font-weight:700}
+.section-title{font-family:Georgia,'Times New Roman',serif;font-size:1.85rem;color:var(--navy);margin-bottom:0.4rem;line-height:1.25;font-weight:700}
+.section-subtitle{font-size:0.95rem;color:var(--text-secondary);margin-bottom:2.5rem;max-width:680px;line-height:1.7}
+
+/* Cards */
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all 0.25s}
+.card:hover{border-color:var(--gold-border);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+
+/* Gold accents */
+.gold-line{width:36px;height:2.5px;background:linear-gradient(to right,var(--accent),var(--gold-dark));border-radius:2px;margin-bottom:1.5rem}
+.gold-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block}
+
+/* Tags */
+.tag{display:inline-block;padding:0.22rem 0.6rem;font-size:0.7rem;border-radius:4px;background:var(--bg-section);color:var(--text-secondary);border:1px solid var(--border-light);margin:0.15rem;font-weight:500;letter-spacing:0.2px}
+.tag-gold{background:var(--gold-soft);color:var(--gold-dark);border-color:var(--gold-border)}
+
+/* ====== HERO ====== */
+.hero{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:6rem 2rem 3rem;background:var(--hero-bg)}
+.hero-content{max-width:780px;text-align:center}
+.hero-pretitle{font-size:0.7rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:1.2rem;font-weight:700}
+.hero-name{font-family:Georgia,'Times New Roman',serif;font-size:3rem;color:var(--navy);margin-bottom:0.4rem;line-height:1.1;font-weight:700}
+.hero-tagline{font-family:Georgia,'Times New Roman',serif;font-size:1.15rem;color:var(--text-secondary);margin-bottom:1.8rem;font-weight:400;font-style:italic;line-height:1.6}
+.hero-summary{font-size:0.92rem;color:var(--text-secondary);line-height:1.85;margin-bottom:2.5rem;max-width:620px;margin-left:auto;margin-right:auto}
+
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:2.5rem;border:1px solid var(--gold-border);border-radius:12px;overflow:hidden;background:var(--accent-pale)}
+.hero-stat{padding:1.4rem 0.8rem;border-right:1px solid var(--gold-border)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-family:Georgia,'Times New Roman',serif;font-size:1.65rem;color:var(--gold-dark);font-weight:700;line-height:1}
+.hero-stat-label{font-size:0.65rem;color:var(--text-muted);margin-top:0.4rem;text-transform:uppercase;letter-spacing:1.2px;font-weight:500}
+
+.hero-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;font-size:0.82rem;color:var(--text-muted)}
+.hero-contact a{color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
+.hero-contact a:hover{color:var(--gold)}
+.hero-cta{display:inline-block;margin-top:2rem;padding:0.7rem 2rem;background:var(--gold-dark);color:var(--white);border:none;border-radius:8px;font-size:0.82rem;cursor:pointer;transition:all 0.3s;text-decoration:none;letter-spacing:0.3px;font-weight:500}
+.hero-cta:hover{background:var(--accent);box-shadow:var(--shadow-md)}
+
+/* ====== GLOBAL FOOTPRINT ====== */
+.map-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:0.5rem}
+.map-card-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem}
+.map-card-flag{font-size:1.3rem}
+.map-card-title{font-size:0.88rem;font-weight:700;color:var(--navy)}
+.map-card-role{font-size:0.78rem;color:var(--gold-dark);font-weight:600;margin-bottom:0.5rem}
+.map-card-detail{font-size:0.8rem;color:var(--text-secondary);line-height:1.6}
+
+/* ====== SCALE ====== */
+.scale-bar{position:relative;margin:3rem 0 2rem;padding:2.5rem 0}
+.scale-track{height:2px;background:linear-gradient(to right,var(--border),var(--accent));border-radius:2px;position:relative}
+.scale-point{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--white);box-shadow:0 0 0 1px var(--accent);cursor:pointer;transition:all 0.3s;z-index:2}
+.scale-point:hover{transform:translate(-50%,-50%) scale(1.3);box-shadow:0 0 0 1px var(--accent),0 0 12px rgba(61,166,122,0.3)}
+.scale-label-top{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);font-size:0.65rem;color:var(--gold-dark);white-space:nowrap;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.scale-label-bottom{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);white-space:nowrap;font-weight:500}
+.scale-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.scale-val{font-family:Georgia,'Times New Roman',serif;font-size:1.2rem;color:var(--gold-dark);margin-bottom:0.4rem;font-weight:700}
+.scale-card-text{font-size:0.8rem;color:var(--text-secondary);line-height:1.6}
+
+/* ====== CASE STUDIES ====== */
+.case-tabs{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.case-tab{padding:0.45rem 1rem;font-size:0.78rem;border-radius:6px;background:var(--off-white);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all 0.2s;white-space:nowrap;font-weight:500}
+.case-tab:hover{border-color:var(--gold-border);color:var(--text-primary)}
+.case-tab.active{background:var(--gold-dark);border-color:var(--gold-dark);color:var(--white)}
+.case-panel{display:none}
+.case-panel.visible{display:block;animation:fadeUp 0.3s ease}
+.case-header{font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;color:var(--navy);margin-bottom:1rem;font-weight:700}
+.case-meta{display:flex;gap:2.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.case-meta-item{font-size:0.8rem}
+.case-meta-label{color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;font-size:0.6rem;margin-bottom:0.15rem;font-weight:600}
+.case-meta-val{color:var(--text-primary);font-weight:600}
+.case-metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.75rem;margin-bottom:1.5rem}
+.metric-card{background:var(--accent-pale);border:1px solid var(--gold-border);border-radius:8px;padding:1rem;text-align:center}
+.metric-num{font-family:Georgia,'Times New Roman',serif;font-size:1.5rem;color:var(--gold-dark);font-weight:700}
+.metric-label{font-size:0.7rem;color:var(--text-muted);margin-top:0.15rem;font-weight:500;letter-spacing:0.3px}
+.case-bullets{list-style:none;padding:0}
+.case-bullets li{position:relative;padding-left:1rem;margin-bottom:0.55rem;font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.case-bullets li::before{content:'';position:absolute;left:0;top:0.55rem;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* ====== MULTIPLIER ====== */
+.mult-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.mult-card{text-align:center;padding:1.8rem 1.2rem}
+.mult-icon{margin-bottom:0.8rem}
+.mult-icon svg{width:28px;height:28px;stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map-card-flag{width:20px;height:20px;display:flex;align-items:center;justify-content:center}
+.map-card-flag svg{width:18px;height:18px;stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.mult-num{font-family:Georgia,'Times New Roman',serif;font-size:1.8rem;color:var(--gold-dark);font-weight:700;margin-bottom:0.2rem}
+.mult-label{font-size:0.82rem;color:var(--text-primary);font-weight:600;margin-bottom:0.4rem}
+.mult-desc{font-size:0.78rem;color:var(--text-secondary);line-height:1.55}
+
+/* Quote card */
+.quote-card{margin-top:2rem;padding:1.8rem 2rem;text-align:center;background:var(--accent-light);border:1px solid var(--gold-border);border-radius:10px;border-left:3px solid var(--accent)}
+.quote-card p{font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:var(--text-secondary);font-style:italic;max-width:680px;margin:0 auto;line-height:1.75}
+
+/* ====== GOVERNANCE ====== */
+.board-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.board-org{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:0.2rem}
+.board-type{font-size:0.72rem;color:var(--gold-dark);font-weight:600;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}
+.board-roles{font-size:0.8rem;color:var(--text-secondary);line-height:1.6}
+.gov-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:2rem}
+
+/* ====== EDUCATION ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.edu-timeline{border-left:2px solid var(--border);padding-left:1.5rem;margin-top:0.5rem}
+.edu-item{position:relative;margin-bottom:1.3rem}
+.edu-item::before{content:'';position:absolute;left:-1.6rem;top:0.35rem;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--white);box-shadow:0 0 0 1px var(--accent)}
+.edu-year{font-size:0.65rem;color:var(--gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.edu-school{font-size:0.9rem;color:var(--navy);font-weight:700;margin-top:0.1rem}
+.edu-detail{font-size:0.8rem;color:var(--text-secondary)}
+.recog-card{border-left:2px solid var(--accent);padding:0.7rem 1rem;margin-bottom:0.6rem;background:var(--accent-pale);border-radius:0 6px 6px 0}
+.recog-title{font-size:0.85rem;font-weight:600;color:var(--gold-dark)}
+.recog-sub{font-size:0.75rem;color:var(--text-muted)}
+
+/* ====== CONTACT ====== */
+.contact-section{text-align:center;padding:5rem 2rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+.contact-link{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;padding:0.6rem 1.8rem;border:1px solid var(--border);border-radius:8px;transition:all 0.2s;font-weight:500}
+.contact-link:hover{color:var(--gold-dark);border-color:var(--accent);box-shadow:var(--shadow-sm)}
+
+/* Footer */
+.footer{text-align:center;padding:1.5rem;font-size:0.7rem;color:var(--text-muted);border-top:1px solid var(--border-light)}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:900px){
+.scale-cards{grid-template-columns:repeat(2,1fr)}
+.board-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+.hero-name{font-size:2.2rem}
+.hero-tagline{font-size:1rem}
+.hero-stats{grid-template-columns:repeat(2,1fr)}
+.hero-stat:nth-child(2){border-right:none}
+.hero-stat:nth-child(1),.hero-stat:nth-child(2){border-bottom:1px solid var(--border)}
+.hero-stat-num{font-size:1.3rem}
+.section{padding:4.5rem 1.2rem 2rem}
+.section-title{font-size:1.4rem}
+.map-grid{grid-template-columns:1fr}
+.scale-cards{grid-template-columns:1fr}
+.case-metrics{grid-template-columns:repeat(2,1fr)}
+.mult-grid{grid-template-columns:1fr}
+.board-grid{grid-template-columns:1fr}
+.two-col{grid-template-columns:1fr}
+.nav-inner{padding:0.6rem 1rem}
+.nav-brand{font-size:0.9rem}
+.scale-label-top,.scale-label-bottom{font-size:0.55rem}
+.case-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.case-tabs::-webkit-scrollbar{display:none}
+.hero-contact{flex-direction:column;gap:0.4rem}
+.contact-links{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="mainNav">
+<div class="nav-inner">
+<span class="nav-brand">Sunil <span>Prashara</span></span>
+<div class="nav-links">
+<a onclick="showSection('hero')" class="active">Home</a>
+<a onclick="showSection('footprint')">Global Footprint</a>
+<a onclick="showSection('scale')">Scale</a>
+<a onclick="showSection('cases')">Case Studies</a>
+<a onclick="showSection('multiplier')">Multiplier Effect</a>
+<a onclick="showSection('governance')">Governance</a>
+<a onclick="showSection('education')">Education</a>
+<a onclick="showSection('contact')">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section id="hero" class="section visible">
+<div class="hero">
+<div class="hero-content">
+<div class="hero-pretitle">CEO &middot; Board Director &middot; Institution Builder</div>
+<h1 class="hero-name">Sunil Prashara</h1>
+<p class="hero-tagline">"I don't build companies. I build the people who build companies."</p>
+<p class="hero-summary">Former CEO of PMI, the world's largest project management body. Operating Partner at Saudi Arabia's Public Investment Fund. A career defined not by titles held, but by institutions built, teams empowered, and value created - from startups to sovereign-backed enterprises across 195 countries.</p>
+
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-num">$6B+</div>
+<div class="hero-stat-label">Enterprise Value Led</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">40+</div>
+<div class="hero-stat-label">Years Experience</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">195</div>
+<div class="hero-stat-label">Countries Impacted</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">1.6M+</div>
+<div class="hero-stat-label">Professionals Certified</div>
+</div>
+</div>
+
+<div class="hero-contact">
+<span>London, UK</span>
+<a href="mailto:sunil.prashara@hotmail.co.uk">sunil.prashara@hotmail.co.uk</a>
+<a href="tel:+447557918001">+44 7557 918 001</a>
+<a href="https://linkedin.com/in/sunilprashara" target="_blank">LinkedIn</a>
+</div>
+
+<a class="hero-cta" onclick="showSection('cases')">Explore the Track Record</a>
+</div>
+</div>
+</section>
+
+<!-- ====== GLOBAL FOOTPRINT ====== -->
+<section id="footprint" class="section" style="background:var(--band-green)">
+<div class="container">
+<div class="section-label">Global Footprint</div>
+<h2 class="section-title">Six Continents. One Operating Model.</h2>
+<p class="section-subtitle">A career built across the world's most demanding markets - from Singapore boardrooms to sovereign wealth funds in Riyadh.</p>
+
+<div class="map-grid">
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">Saudi Arabia</span></div>
+<div class="map-card-role">Director, Executive In Residence - PIF (2023 - Present)</div>
+<div class="map-card-detail">Operating Partner building sovereign-backed companies from scratch. Launched a $500M digital bank, supported Saudi's first Carbon Exchange Platform, and led value creation capturing $400M+ in incremental value across PIF portfolio.</div>
+</div>
+
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">United States</span></div>
+<div class="map-card-role">CEO & President - PMI (2019 - 2022)</div>
+<div class="map-card-detail">Led the world's largest project management institute. 750 employees, 300 offices, 195 countries, $6B+ economic value. Grew subscribers from 650K to 1.2M, increased cash reserves by 30% to $1B.</div>
+</div>
+
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">United Kingdom</span></div>
+<div class="map-card-role">Founder & CEO - I1too Ltd (2016 - 2019)</div>
+<div class="map-card-detail">Built a global digital sales accelerator from zero to $4.6M ARR and $30M annuity TCV. Achieved breakeven in 24 months. Successful exit to Dubai-based family office. Named Top 20 Dynamic UK CEO 2020.</div>
+</div>
+
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">Global - Vodafone</span></div>
+<div class="map-card-role">Global Sales Ops Director - Vodafone Enterprise (2013 - 2016)</div>
+<div class="map-card-detail">Led the largest digital transformation in the telecom enterprise sector - a &pound;10B program across 24 markets. Managed 2,000+ staff and consultants from Accenture, KPMG, NTT, and Salesforce.</div>
+</div>
+
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">Singapore</span></div>
+<div class="map-card-role">EVP Sales - Nokia (2009 - 2013) | MD - Accenture (2005 - 2009)</div>
+<div class="map-card-detail">At Nokia: delivered $8B in sales across 11 regions, closed AT&T ($2B TCV), restructured global sales from 6,000 to 1,800. At Accenture: established outsourcing practice in APAC with Malaysia Airlines, Singapore Airlines, and Diageo.</div>
+</div>
+
+<div class="card map-card">
+<div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">The Netherlands</span></div>
+<div class="map-card-role">CFO Europe - Perot Systems (1995 - 2005)</div>
+<div class="map-card-detail">Led finance for European operations with $2.5B revenues and 6,000 employees. Executed a $1B M&A carveout. Supported the Perot Systems IPO in 1999. Progressed from Commercial Director to CFO Europe.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ====== SCALE SPECTRUM ====== -->
+<section id="scale" class="section">
+<div class="container">
+<div class="section-label">The Scale Spectrum</div>
+<h2 class="section-title">From Startup to Sovereign Fund</h2>
+<p class="section-subtitle">The rare executive who has built, scaled, transformed, and turned around organizations at every level of complexity.</p>
+
+<div class="scale-bar">
+<div class="scale-track">
+<div class="scale-point" style="left:5%">
+<div class="scale-label-top">$4.6M ARR</div>
+<div class="scale-label-bottom">I1too Startup</div>
+</div>
+<div class="scale-point" style="left:25%">
+<div class="scale-label-top">$2.5B Rev</div>
+<div class="scale-label-bottom">Perot Systems EU</div>
+</div>
+<div class="scale-point" style="left:45%">
+<div class="scale-label-top">$6B Value</div>
+<div class="scale-label-bottom">PMI Global</div>
+</div>
+<div class="scale-point" style="left:65%">
+<div class="scale-label-top">$8B Sales</div>
+<div class="scale-label-bottom">Nokia</div>
+</div>
+<div class="scale-point" style="left:82%">
+<div class="scale-label-top">&pound;10B Transform</div>
+<div class="scale-label-bottom">Vodafone</div>
+</div>
+<div class="scale-point" style="left:97%">
+<div class="scale-label-top">$1.5B+ Capital</div>
+<div class="scale-label-bottom">PIF Sovereign</div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:4rem">
+<div class="scale-cards">
+<div class="card">
+<div class="scale-val">Builder</div>
+<p class="scale-card-text">Built I1too from zero to $4.6M ARR and $30M TCV. Built 5 PIF portfolio companies from scratch. At PMI, built an entirely new digital platform and product portfolio from legacy systems.</p>
+</div>
+<div class="card">
+<div class="scale-val">Scaler</div>
+<p class="scale-card-text">Scaled PMI subscribers from 650K to 1.2M. Scaled Vodafone's sales certifications to 12,000 employees. At Nokia, grew Managed Services share from 42% to 53% of total business.</p>
+</div>
+<div class="card">
+<div class="scale-val">Transformer</div>
+<p class="scale-card-text">Led PMI's enterprise-wide digital transformation. Led Vodafone's &pound;10B digital overhaul across 24 markets. Restructured Nokia's global sales from 6,000 to 1,800 while improving win ratios.</p>
+</div>
+<div class="card">
+<div class="scale-val">Turnaround</div>
+<p class="scale-card-text">Re-negotiated Nokia's loss-making contracts into profitable ones. Boosted service fees by 15% while cutting delivery costs 15%. Led PMI through COVID, raising $60M+ for relief.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ====== CASE STUDIES ====== -->
+<section id="cases" class="section" style="background:var(--band-green)">
+<div class="container">
+<div class="section-label">Transformation Playbook</div>
+<h2 class="section-title">Five Defining Chapters</h2>
+<p class="section-subtitle">Each role required a fundamentally different playbook. The thread that runs through all of them: build the system, empower the people, deliver the result.</p>
+
+<div class="case-tabs">
+<button class="case-tab active" onclick="showCase('pif',this)">PIF Saudi Arabia</button>
+<button class="case-tab" onclick="showCase('pmi',this)">PMI Global</button>
+<button class="case-tab" onclick="showCase('vodafone',this)">Vodafone Enterprise</button>
+<button class="case-tab" onclick="showCase('nokia',this)">Nokia</button>
+<button class="case-tab" onclick="showCase('startup',this)">I1too (Startup)</button>
+</div>
+
+<!-- PIF -->
+<div id="casePanel-pif" class="case-panel visible">
+<div class="card" style="padding:2rem">
+<h3 class="case-header">Building Nations: PIF Operating Partner</h3>
+<div class="case-meta">
+<div class="case-meta-item"><div class="case-meta-label">Period</div><div class="case-meta-val">2023 - Present</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Director, Executive In Residence</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-val">Sovereign Wealth Fund Portfolio</div></div>
+</div>
+<div class="case-metrics">
+<div class="metric-card"><div class="metric-num">$500M</div><div class="metric-label">Digital Bank Capital</div></div>
+<div class="metric-card"><div class="metric-num">$500M</div><div class="metric-label">Carbon Exchange Capital</div></div>
+<div class="metric-card"><div class="metric-num">$400M+</div><div class="metric-label">Incremental Value Captured</div></div>
+</div>
+<ul class="case-bullets">
+<li>Launched a digital bank in Riyadh with over $500M in capital - from regulatory framework to operational launch</li>
+<li>Supported the build-out of Saudi Arabia's first Carbon Exchange Platform with $500M capital</li>
+<li>Led value creation initiatives across PIF portfolio, capturing over $400M in incremental value versus original investment cases</li>
+<li>Established operational playbooks for AI, project management, and commercial setup now used across portfolio companies</li>
+<li>Serves on multiple PIF board advisory committees, executive committees, and NRCs</li>
+</ul>
+</div>
+</div>
+
+<!-- PMI -->
+<div id="casePanel-pmi" class="case-panel">
+<div class="card" style="padding:2rem">
+<h3 class="case-header">Transforming the Global Standard: CEO of PMI</h3>
+<div class="case-meta">
+<div class="case-meta-item"><div class="case-meta-label">Period</div><div class="case-meta-val">2019 - 2022</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">CEO & President</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-val">750 Employees, 195 Countries</div></div>
+</div>
+<div class="case-metrics">
+<div class="metric-card"><div class="metric-num">+15%</div><div class="metric-label">Revenue Growth p.a.</div></div>
+<div class="metric-card"><div class="metric-num">$1B</div><div class="metric-label">Cash Reserves (+30%)</div></div>
+<div class="metric-card"><div class="metric-num">1.2M</div><div class="metric-label">Subscribers (from 650K)</div></div>
+<div class="metric-card"><div class="metric-num">$60M+</div><div class="metric-label">Raised for COVID & Charity</div></div>
+</div>
+<ul class="case-bullets">
+<li>Led enterprise-wide digital transformation from legacy systems to a cloud-based, AI-enabled global platform</li>
+<li>Acquired and integrated two international agile enterprises</li>
+<li>Established 200+ strategic partnerships with global companies</li>
+<li>Successful global brand relaunch - won three Stevie Marketing Awards</li>
+<li>Grew student sponsorships 100% globally within 24 months</li>
+<li>Named "Top 100 Associations That Will Save The World" by ASAE for COVID leadership</li>
+<li>Key relationships: US & UK Governments, UN Global Compact, The Economist, Drucker Foundation, Thinkers50</li>
+</ul>
+</div>
+</div>
+
+<!-- Vodafone -->
+<div id="casePanel-vodafone" class="case-panel">
+<div class="card" style="padding:2rem">
+<h3 class="case-header">The Largest Telecom Transformation: Vodafone Enterprise</h3>
+<div class="case-meta">
+<div class="case-meta-item"><div class="case-meta-label">Period</div><div class="case-meta-val">2013 - 2016</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Global Sales Ops Director & Board Member</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-val">24 Markets, 2,000+ Staff</div></div>
+</div>
+<div class="case-metrics">
+<div class="metric-card"><div class="metric-num">&pound;10B</div><div class="metric-label">Transformation Value</div></div>
+<div class="metric-card"><div class="metric-num">65</div><div class="metric-label">Projects / 24 Markets</div></div>
+<div class="metric-card"><div class="metric-num">$1.55B</div><div class="metric-label">New Revenue Generated</div></div>
+<div class="metric-card"><div class="metric-num">12,000</div><div class="metric-label">Sales Certs Issued</div></div>
+</div>
+<ul class="case-bullets">
+<li>Led the largest digital transformation in the telecom enterprise sector - 65 projects across 24 markets</li>
+<li>Won the Salesforce Surfboard Award for "Fastest and largest global deployment of Salesforce"</li>
+<li>Built a sales academy delivering 30,000 online courses to 8,000 personnel</li>
+<li>Launched Vodafone Red mobile app in three markets - $1B in new sales</li>
+<li>Created inside sales capability from Dublin generating $550M within 12 months</li>
+</ul>
+</div>
+</div>
+
+<!-- Nokia -->
+<div id="casePanel-nokia" class="case-panel">
+<div class="card" style="padding:2rem">
+<h3 class="case-header">Restructuring at Global Scale: Nokia</h3>
+<div class="case-meta">
+<div class="case-meta-item"><div class="case-meta-label">Period</div><div class="case-meta-val">2009 - 2013</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">EVP Sales - Executive Leadership</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-val">11 Regions, 6,000+ Employees</div></div>
+</div>
+<div class="case-metrics">
+<div class="metric-card"><div class="metric-num">$8B</div><div class="metric-label">2010 Sales Delivered</div></div>
+<div class="metric-card"><div class="metric-num">53%</div><div class="metric-label">Managed Services Share</div></div>
+<div class="metric-card"><div class="metric-num">40%</div><div class="metric-label">Win Ratio (from 25%)</div></div>
+<div class="metric-card"><div class="metric-num">30%</div><div class="metric-label">Cost Reduction</div></div>
+</div>
+<ul class="case-bullets">
+<li>Delivered $8B in sales across 11 regions - closed AT&T ($2B), Saudi Telecom ($300M), Vodafone Spain ($300M)</li>
+<li>Grew Managed Services from 42% to 53% of total Nokia business</li>
+<li>Turned loss-making contracts profitable: boosted service fees 15%, cut delivery costs 15%</li>
+<li>Improved overall win ratios from 25% to over 40%</li>
+<li>Led worldwide restructuring - consolidated 6,000 to 1,800 personnel while improving performance</li>
+</ul>
+</div>
+</div>
+
+<!-- Startup -->
+<div id="casePanel-startup" class="case-panel">
+<div class="card" style="padding:2rem">
+<h3 class="case-header">Proof of Range: Building I1too From Zero</h3>
+<div class="case-meta">
+<div class="case-meta-item"><div class="case-meta-label">Period</div><div class="case-meta-val">2016 - 2019</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-val">Founder & CEO</div></div>
+<div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-val">Insurance, Healthcare, Solar, IT</div></div>
+</div>
+<div class="case-metrics">
+<div class="metric-card"><div class="metric-num">$4.6M</div><div class="metric-label">ARR Achieved</div></div>
+<div class="metric-card"><div class="metric-num">$30M</div><div class="metric-label">Annuity TCV</div></div>
+<div class="metric-card"><div class="metric-num">24 mo</div><div class="metric-label">To Breakeven</div></div>
+</div>
+<ul class="case-bullets">
+<li>Launched a global digital sales accelerator for startups across Insurance, Healthcare, Solar, and IT</li>
+<li>Grew from zero to 12 consultants, $4.6M ARR and $30M annuity TCV</li>
+<li>Breakeven in 24 months with no external funding</li>
+<li>In parallel: interim CEO at Expereo, Head of Sales at Afiniti AI, consulting for Delta Partners, FTI, IK Investments</li>
+<li>Successful exit in 2019 to Pioneer House (Dubai-based family office)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ====== MULTIPLIER EFFECT ====== -->
+<section id="multiplier" class="section">
+<div class="container">
+<div class="section-label">The Multiplier Effect</div>
+<h2 class="section-title">The Leaders He Leaves Behind</h2>
+<p class="section-subtitle">Sunil's real metric isn't revenue - it's the capacity he builds in other people. Every role has left the people around him more capable, more certified, and more confident.</p>
+
+<div class="mult-grid">
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
+<div class="mult-num">1.6M+</div>
+<div class="mult-label">Professionals Certified</div>
+<div class="mult-desc">Expanded PMI's active certification base globally, bringing the PMP standard to new markets and demographics worldwide.</div>
+</div>
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><path d="M12 22c5.5-3 9-7.5 9-12V5l-9-3-9 3v5c0 4.5 3.5 9 9 12z"/></svg></div>
+<div class="mult-num">100%</div>
+<div class="mult-label">Student Sponsorship Growth</div>
+<div class="mult-desc">Doubled global student sponsorships in 24 months at PMI - directly investing in the next generation of project leaders.</div>
+</div>
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+<div class="mult-num">30,000</div>
+<div class="mult-label">Training Courses Delivered</div>
+<div class="mult-desc">Built Vodafone's sales academy from scratch. 30,000 courses to 8,000 personnel. 12,000 employees earned sales certifications.</div>
+</div>
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+<div class="mult-num">$60M+</div>
+<div class="mult-label">Raised for Others</div>
+<div class="mult-desc">Led PMI's COVID relief effort, raising over $60M for charities, youth foundations, and support programs during the pandemic.</div>
+</div>
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+<div class="mult-num">200+</div>
+<div class="mult-label">Strategic Partnerships</div>
+<div class="mult-desc">Created a network of 200+ global company partnerships at PMI - multiplying the institute's reach far beyond what any individual could.</div>
+</div>
+<div class="card mult-card">
+<div class="mult-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div>
+<div class="mult-num">5+</div>
+<div class="mult-label">Enterprises Built From Zero</div>
+<div class="mult-desc">At PIF, built multiple sovereign-backed companies with operational playbooks designed so others can run them independently.</div>
+</div>
+</div>
+
+<div class="quote-card">
+<p>"The mark of a great leader isn't the organization they build - it's the organization that thrives after they leave. Every system, team, and playbook Sunil creates is designed to outlast him."</p>
+</div>
+</div>
+</section>
+
+<!-- ====== GOVERNANCE ====== -->
+<section id="governance" class="section" style="background:var(--band-green)">
+<div class="container">
+<div class="section-label">Board & Governance</div>
+<h2 class="section-title">Governance at the Highest Level</h2>
+<p class="section-subtitle">Deep experience across audit, nominations, strategy, and executive committees - from global nonprofits to sovereign portfolio companies.</p>
+
+<div class="board-grid">
+<div class="card">
+<div class="board-org">CIFOR-ICRAF</div>
+<div class="board-type">Global NGO - Sustainability & Reforestation</div>
+<div class="board-roles">Board Trustee (one of seven) &middot; Chairman of Nominations Committee &middot; ExCom Member &middot; Audit Committee Member</div>
+</div>
+<div class="card">
+<div class="board-org">PIF Portfolio Companies</div>
+<div class="board-type">Saudi Sovereign Wealth Fund</div>
+<div class="board-roles">Multiple Board Advisory Committees &middot; Executive Committees &middot; NRCs &middot; Governance and strategic alignment</div>
+</div>
+<div class="card">
+<div class="board-org">Project Management Institute</div>
+<div class="board-type">Global Professional Institute</div>
+<div class="board-roles">Audit Committee &middot; NRC &middot; ExCom &middot; Strategy Committee &middot; Chairman of Global Executive Council</div>
+</div>
+<div class="card">
+<div class="board-org">United Nations Global Compact</div>
+<div class="board-type">International Organization</div>
+<div class="board-roles">Board Member - advancing sustainable development and corporate responsibility globally</div>
+</div>
+<div class="card">
+<div class="board-org">Peter Drucker Forum</div>
+<div class="board-type">Global Leadership Forum</div>
+<div class="board-roles">Advisory Board Member - contributing to global discourse on management and leadership</div>
+</div>
+<div class="card">
+<div class="board-org">Tawrid (PIF FinTech)</div>
+<div class="board-type">Sovereign-backed Financial Technology</div>
+<div class="board-roles">ExCom Member &middot; NRC Member &middot; Governance oversight for PIF-owned FinTech</div>
+</div>
+</div>
+
+<div class="gov-tags">
+<span class="tag tag-gold">Audit Committees</span>
+<span class="tag tag-gold">Nominations & Remuneration</span>
+<span class="tag tag-gold">Strategy Committees</span>
+<span class="tag tag-gold">Executive Committees</span>
+<span class="tag tag-gold">Board-Level Investor Dynamics</span>
+<span class="tag tag-gold">M&A Governance</span>
+<span class="tag tag-gold">ESG/SDG Oversight</span>
+<span class="tag tag-gold">Crisis Governance</span>
+<span class="tag tag-gold">Corporate Finance</span>
+</div>
+</div>
+</section>
+
+<!-- ====== EDUCATION ====== -->
+<section id="education" class="section">
+<div class="container">
+<div class="two-col">
+<div>
+<div class="section-label">Education</div>
+<h2 class="section-title">Academic Foundation</h2>
+<div class="gold-line"></div>
+
+<div class="edu-timeline">
+<div class="edu-item">
+<div class="edu-year">2026 (Ongoing)</div>
+<div class="edu-school">INSEAD</div>
+<div class="edu-detail">Directors and Corporate Governance Certification</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">2025</div>
+<div class="edu-school">Wharton School of Business</div>
+<div class="edu-detail">Scaling Business for Profitable Growth</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">2024</div>
+<div class="edu-school">INSEAD</div>
+<div class="edu-detail">Executive Coaching Certification</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">2022 - 2023</div>
+<div class="edu-school">London Business School</div>
+<div class="edu-detail">MSc (with Distinction) - Sloan Fellow, Leadership & Strategy</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">2021</div>
+<div class="edu-school">London Business School</div>
+<div class="edu-detail">Senior Executive Programme (SEP)</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">1990</div>
+<div class="edu-school">CIMA</div>
+<div class="edu-detail">Chartered Institute of Management Accountants</div>
+</div>
+<div class="edu-item">
+<div class="edu-year">1986</div>
+<div class="edu-school">Royal Holloway, University of London</div>
+<div class="edu-detail">BSc (Honours)</div>
+</div>
+</div>
+</div>
+
+<div>
+<div class="section-label">Recognition</div>
+<h2 class="section-title">Awards & Affiliations</h2>
+<div class="gold-line"></div>
+
+<div style="margin-bottom:1.5rem">
+<div class="recog-card">
+<div class="recog-title">Top 20 Dynamic UK CEOs of 2020</div>
+<div class="recog-sub">CEO Magazine</div>
+</div>
+<div class="recog-card">
+<div class="recog-title">Top 100 Associations That Will Save The World</div>
+<div class="recog-sub">ASAE - for PMI's COVID leadership</div>
+</div>
+<div class="recog-card">
+<div class="recog-title">3x Stevie Award Winner</div>
+<div class="recog-sub">Best Branding & Logo Design - PMI</div>
+</div>
+<div class="recog-card">
+<div class="recog-title">Salesforce Surfboard Award</div>
+<div class="recog-sub">Fastest & largest global Salesforce deployment - Vodafone</div>
+</div>
+<div class="recog-card">
+<div class="recog-title">Sloan Fellow (with Distinction)</div>
+<div class="recog-sub">London Business School - Leadership & Strategy</div>
+</div>
+</div>
+
+<h3 style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:0.6rem;font-weight:600">Key Relationships</h3>
+<div style="display:flex;flex-wrap:wrap;gap:0.3rem">
+<span class="tag">US & UK Governments</span>
+<span class="tag">United Nations</span>
+<span class="tag">The Economist</span>
+<span class="tag">Drucker Foundation</span>
+<span class="tag">Thinkers50</span>
+<span class="tag">Fortune 500</span>
+<span class="tag">DIPMF</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact" class="section" style="background:var(--accent-pale)">
+<div class="contact-section">
+<div class="section-label">Get in Touch</div>
+<h2 class="section-title" style="text-align:center;margin:0 auto 0.5rem">Let's Build Something</h2>
+<p class="section-subtitle" style="text-align:center;margin:0 auto 2rem">Available for board positions, advisory roles, executive leadership, and strategic consulting engagements.</p>
+
+<div class="contact-links">
+<a href="mailto:sunil.prashara@hotmail.co.uk" class="contact-link">Email</a>
+<a href="tel:+447557918001" class="contact-link">+44 7557 918 001</a>
+<a href="https://linkedin.com/in/sunilprashara" target="_blank" class="contact-link">LinkedIn</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<div class="footer">&copy; 2026 Sunil Prashara. Built with Claude Code.</div>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('visible'); });
+    var el = document.getElementById(id);
+    if (el) el.classList.add('visible');
+    document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('active'); });
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').indexOf("'" + id + "'") > -1) a.classList.add('active');
+    });
+    window.scrollTo(0, 0);
+}
+
+function showCase(id, el) {
+    document.querySelectorAll('.case-tab').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+    ['pif','pmi','vodafone','nokia','startup'].forEach(function(p) {
+        var panel = document.getElementById('casePanel-' + p);
+        if (panel) { panel.classList.remove('visible'); if (p === id) panel.classList.add('visible'); }
+    });
+}
+
+// Nav scroll fade
+(function() {
+    var nav = document.querySelector('.nav-links');
+    if (!nav) return;
+    function updateFade() {
+        var sl = nav.scrollLeft, sw = nav.scrollWidth, cw = nav.clientWidth;
+        if (sw <= cw) { nav.classList.remove('scrolled-end','scrolled-mid'); return; }
+        if (sl < 5) { nav.classList.remove('scrolled-end','scrolled-mid'); }
+        else if (sl + cw >= sw - 5) { nav.classList.add('scrolled-end'); nav.classList.remove('scrolled-mid'); }
+        else { nav.classList.add('scrolled-mid'); nav.classList.remove('scrolled-end'); }
+    }
+    nav.addEventListener('scroll', updateFade);
+    window.addEventListener('resize', updateFade);
+    updateFade();
+})();
+
+// Nav shadow on scroll
+window.addEventListener('scroll', function() {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 10);
+});
+</script>
+
+</body>
+</html>
