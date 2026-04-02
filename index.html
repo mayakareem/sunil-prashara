@@ -81,6 +81,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 /* ====== HERO ====== */
 .hero{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:6rem 2rem 3rem;background:var(--hero-bg)}
 .hero-content{max-width:780px;text-align:center}
+.hero-photo{width:130px;height:130px;border-radius:50%;object-fit:cover;border:3px solid var(--gold-border);margin:0 auto 1.5rem;display:block;background:var(--accent-pale)}
+.hero-photo-placeholder{width:130px;height:130px;border-radius:50%;border:3px solid var(--gold-border);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;background:var(--accent-pale);color:var(--gold-dark);font-family:Georgia,'Times New Roman',serif;font-size:2.8rem;font-weight:700}
 .hero-pretitle{font-size:0.7rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:1.2rem;font-weight:700}
 .hero-name{font-family:Georgia,'Times New Roman',serif;font-size:3rem;color:var(--navy);margin-bottom:0.4rem;line-height:1.1;font-weight:700}
 .hero-tagline{font-family:Georgia,'Times New Roman',serif;font-size:1.15rem;color:var(--text-secondary);margin-bottom:1.8rem;font-weight:400;font-style:italic;line-height:1.6}
@@ -171,6 +173,19 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .recog-title{font-size:0.85rem;font-weight:600;color:var(--gold-dark)}
 .recog-sub{font-size:0.75rem;color:var(--text-muted)}
 
+/* ====== AWARDS & MEDIA ====== */
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
+.media-card{background:var(--white);border:1px solid var(--border-light);border-radius:8px;padding:1.1rem 1.2rem;text-decoration:none;color:inherit;transition:box-shadow 0.2s ease,border-color 0.2s ease;display:block}
+.media-card:hover{box-shadow:var(--shadow-md);border-color:var(--accent)}
+.media-source{font-size:0.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.media-title{font-size:0.88rem;color:var(--navy);font-weight:700;margin-top:0.3rem;line-height:1.4}
+.media-desc{font-size:0.76rem;color:var(--text-secondary);margin-top:0.25rem;line-height:1.5}
+.awards-grid{display:grid;grid-template-columns:1fr;gap:0.8rem;margin-top:1.5rem}
+.award-card{background:var(--white);border:1px solid var(--border-light);border-radius:8px;padding:1rem 1.2rem;transition:box-shadow 0.2s ease}
+.award-card:hover{box-shadow:var(--shadow-md)}
+.award-name{font-size:0.92rem;color:var(--navy);font-weight:700}
+.award-context{font-size:0.78rem;color:var(--text-secondary);margin-top:0.2rem}
+
 /* ====== CONTACT ====== */
 .contact-section{text-align:center;padding:5rem 2rem}
 .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
@@ -207,9 +222,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .case-tabs::-webkit-scrollbar{display:none}
 .hero-contact{flex-direction:column;gap:0.4rem}
 .contact-links{flex-direction:column;align-items:center}
+.media-grid{grid-template-columns:1fr}
 }
 </style>
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
 
@@ -225,6 +240,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <a onclick="showSection('multiplier')">Multiplier Effect</a>
 <a onclick="showSection('governance')">Governance</a>
 <a onclick="showSection('education')">Education</a>
+<a onclick="showSection('awards')">Awards &amp; Media</a>
 <a onclick="showSection('contact')">Contact</a>
 </div>
 </div>
@@ -234,10 +250,11 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <section id="hero" class="section visible">
 <div class="hero">
 <div class="hero-content">
-<div class="hero-pretitle">CEO &middot; Board Director &middot; Institution Builder</div>
+<div class="hero-photo-placeholder">SP</div>
+<div class="hero-pretitle">CEO &middot; OPERATOR &middot; BOARD-READY LEADER</div>
 <h1 class="hero-name">Sunil Prashara</h1>
 <p class="hero-tagline">"I don't build companies. I build the people who build companies."</p>
-<p class="hero-summary">Former CEO of PMI, the world's largest project management body. Operating Partner at Saudi Arabia's Public Investment Fund. A career defined not by titles held, but by institutions built, teams empowered, and value created - from startups to sovereign-backed enterprises across 195 countries.</p>
+<p class="hero-summary">30+ years building, scaling, and transforming businesses from startups to sovereign-backed enterprises across 195 countries. Former CEO of PMI. Operating Partner at PIF. Now channelling that operational depth into board governance, backed by a Sloan Fellowship and INSEAD governance credentials.</p>
 
 <div class="hero-stats">
 <div class="hero-stat">
@@ -287,13 +304,13 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="card map-card">
 <div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">United States</span></div>
 <div class="map-card-role">CEO & President - PMI (2019 - 2022)</div>
-<div class="map-card-detail">Led the world's largest project management institute. 750 employees, 300 offices, 195 countries, $6B+ economic value. Grew subscribers from 650K to 1.2M, increased cash reserves by 30% to $1B.</div>
+<div class="map-card-detail">Led the world's largest project management institute. 750 employees, 300 offices, 195 countries, $6B+ economic value. Grew subscribers from 650K to 1.2M, increased cash reserves by 30% to $1B. Named Top 20 Dynamic UK CEO 2020.</div>
 </div>
 
 <div class="card map-card">
 <div class="map-card-header"><span class="map-card-flag"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="map-card-title">United Kingdom</span></div>
 <div class="map-card-role">Founder & CEO - I1too Ltd (2016 - 2019)</div>
-<div class="map-card-detail">Built a global digital sales accelerator from zero to $4.6M ARR and $30M annuity TCV. Achieved breakeven in 24 months. Successful exit to Dubai-based family office. Named Top 20 Dynamic UK CEO 2020.</div>
+<div class="map-card-detail">Built a global digital sales accelerator from zero to $4.6M ARR and $30M annuity TCV. Achieved breakeven in 24 months. Successful exit to Dubai-based family office.</div>
 </div>
 
 <div class="card map-card">
@@ -631,6 +648,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div>
 <div class="section-label">Education</div>
 <h2 class="section-title">Academic Foundation</h2>
+<p class="section-subtitle" style="max-width:620px">After 30+ years of operational leadership, Sunil invested in formal governance and strategy credentials, completing the Sloan Fellowship and INSEAD's Directors programme to bring boardroom expertise on par with his operational depth.</p>
 <div class="gold-line"></div>
 
 <div class="edu-timeline">
@@ -672,45 +690,136 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 </div>
 </div>
 
-<div>
-<div class="section-label">Recognition</div>
-<h2 class="section-title">Awards & Affiliations</h2>
+</div>
+</div>
+</section>
+
+<!-- ====== AWARDS & MEDIA ====== -->
+<section id="awards" class="section" style="background:var(--band-green)">
+<div class="container">
 <div class="gold-line"></div>
+<div class="section-label">Recognition</div>
+<h2 class="section-title">Awards, Publications &amp; Media</h2>
+<p class="section-subtitle">A public profile built at PMI, where Sunil became the visible face of the world's largest project management body across global media, industry conferences, and thought leadership platforms.</p>
 
-<div style="margin-bottom:1.5rem">
-<div class="recog-card">
-<div class="recog-title">Top 20 Dynamic UK CEOs of 2020</div>
-<div class="recog-sub">CEO Magazine</div>
+<h3 style="font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem;font-weight:700;">Featured Media &amp; Interviews</h3>
+
+<div class="media-grid">
+<a class="media-card" href="https://www.ted.com/talks/sunil_prashara_how_complex_global_organizations_are_adapting_to_our_new_reality" target="_blank" rel="noopener">
+<div class="media-source">TED</div>
+<div class="media-title">How Complex Global Organizations Are Adapting to Our New Reality</div>
+<div class="media-desc">TED Talk on organizational adaptation and leadership through uncertainty.</div>
+</a>
+
+<a class="media-card" href="https://fortune.com/2021/06/15/innovation-leadership-citizen-development-sunil-prashara-project-management-institute/" target="_blank" rel="noopener">
+<div class="media-source">Fortune</div>
+<div class="media-title">Innovation, Leadership &amp; Citizen Development</div>
+<div class="media-desc">On how PMI is democratizing project skills across industries.</div>
+</a>
+
+<a class="media-card" href="https://www.fastcompany.com/90617177/how-to-apply-empathetic-leadership-skills-when-returning-to-the-office" target="_blank" rel="noopener">
+<div class="media-source">Fast Company</div>
+<div class="media-title">How to Apply Empathetic Leadership When Returning to the Office</div>
+<div class="media-desc">On leading with empathy during the post-pandemic workplace transition.</div>
+</a>
+
+<a class="media-card" href="https://www.fastcompany.com/90529468/challenging-times-calls-for-businesses-to-embrace-this-one-multi-faceted-skill" target="_blank" rel="noopener">
+<div class="media-source">Fast Company</div>
+<div class="media-title">Challenging Times Call for This One Multi-Faceted Skill</div>
+<div class="media-desc">On why project management is the critical skill for navigating disruption.</div>
+</a>
+
+<a class="media-card" href="https://www.independent.co.uk/news/business/business-reporter/how-to-build-culture-excellence-b1879545.html" target="_blank" rel="noopener">
+<div class="media-source">The Independent</div>
+<div class="media-title">How to Build a Culture of Excellence</div>
+<div class="media-desc">On building high-performance culture in a VUCA world.</div>
+</a>
+
+<a class="media-card" href="https://medium.com/authority-magazine/sunil-prashara-of-project-management-institute-pmi-five-things-you-need-to-be-a-highly-fd61123d144c" target="_blank" rel="noopener">
+<div class="media-source">Authority Magazine</div>
+<div class="media-title">Five Things You Need to Be a Highly Effective Leader</div>
+<div class="media-desc">In-depth interview on leadership philosophy and lessons from PMI.</div>
+</a>
+
+<a class="media-card" href="https://theceopublication.com/empowering-change-makers-to-turn-strategies-into-actions-sunil-prashara/" target="_blank" rel="noopener">
+<div class="media-source">The CEO Publication</div>
+<div class="media-title">Empowering Change-Makers to Turn Strategies Into Actions</div>
+<div class="media-desc">Profile on Sunil's vision for PMI and global project leadership.</div>
+</a>
+
+<a class="media-card" href="https://ivypodcast.com/episode/sunil-prashara-president-ceo-at-project-management-institute/" target="_blank" rel="noopener">
+<div class="media-source">IVY Podcast</div>
+<div class="media-title">President &amp; CEO at Project Management Institute</div>
+<div class="media-desc">Podcast interview on career journey and scaling global institutions.</div>
+</a>
+
+<a class="media-card" href="https://www.ericsalmon.com/wp-content/uploads/2023/03/ESP-Fearless-Leader-series-Episode-1-with-Sunil-Prashara.pdf" target="_blank" rel="noopener">
+<div class="media-source">Eric Salmon &amp; Partners</div>
+<div class="media-title">Fearless Leader Series, Episode 1</div>
+<div class="media-desc">Executive headhunter interview on leadership, courage, and career transitions.</div>
+</a>
+
+<a class="media-card" href="https://www.sardertv.com/author/sunil-prashara/" target="_blank" rel="noopener">
+<div class="media-source">SARDER TV</div>
+<div class="media-title">Video Interview Series</div>
+<div class="media-desc">In-depth video interviews on leadership and global management.</div>
+</a>
+
+<a class="media-card" href="https://www.pmi.org/search?#q=sunil%20prashara&f:ContentType=[Article,Webpage,Report,Podcast,White%20Paper]" target="_blank" rel="noopener">
+<div class="media-source">PMI.org</div>
+<div class="media-title">Articles, Podcasts &amp; Publications</div>
+<div class="media-desc">Full archive of Sunil's articles, podcasts, and thought leadership on PMI.org.</div>
+</a>
+
+<a class="media-card" href="https://www.businesswire.com/news/home/20210401005059/en/Peter-Drucker-Society-Europe-Appoints-Sunil-Prashara-of-Project-Management-Institute-to-International-Advisory-Board" target="_blank" rel="noopener">
+<div class="media-source">BusinessWire</div>
+<div class="media-title">Appointed to Peter Drucker Society International Advisory Board</div>
+<div class="media-desc">2021. Recognized for thought leadership in management and organizational effectiveness.</div>
+</a>
 </div>
-<div class="recog-card">
-<div class="recog-title">Top 100 Associations That Will Save The World</div>
-<div class="recog-sub">ASAE - for PMI's COVID leadership</div>
+
+<h3 style="font-size:0.95rem;color:var(--navy);margin-top:2.5rem;margin-bottom:0.5rem;font-weight:700;">Awards &amp; Appointments</h3>
+
+<div class="awards-grid">
+<div class="award-card">
+<div class="award-name">Top 20 Dynamic UK CEOs of 2020</div>
+<div class="award-context">CEO Magazine. Recognized whilst leading PMI as President &amp; CEO.</div>
 </div>
-<div class="recog-card">
-<div class="recog-title">3x Stevie Award Winner</div>
-<div class="recog-sub">Best Branding & Logo Design - PMI</div>
+<div class="award-card">
+<div class="award-name">Top 100 Associations That Will Save The World</div>
+<div class="award-context">ASAE. PMI recognized for COVID-era leadership and global community response.</div>
 </div>
-<div class="recog-card">
-<div class="recog-title">Salesforce Surfboard Award</div>
-<div class="recog-sub">Fastest & largest global Salesforce deployment - Vodafone</div>
+<div class="award-card">
+<div class="award-name">3x Stevie Award Winner</div>
+<div class="award-context">Best Branding &amp; Logo Design. PMI global rebrand under Sunil's leadership.</div>
 </div>
-<div class="recog-card">
-<div class="recog-title">Sloan Fellow (with Distinction)</div>
-<div class="recog-sub">London Business School - Leadership & Strategy</div>
+<div class="award-card">
+<div class="award-name">Peter Drucker Society International Advisory Board</div>
+<div class="award-context">2021. Appointed to the Advisory Board of the Peter Drucker Society Europe.</div>
+</div>
+<div class="award-card">
+<div class="award-name">X0PA AI Board of Advisors</div>
+<div class="award-context">Advisory board appointment at AI-powered talent acquisition platform.</div>
+</div>
+<div class="award-card">
+<div class="award-name">Salesforce Surfboard Award</div>
+<div class="award-context">Fastest and largest global Salesforce deployment. Achieved at Vodafone.</div>
+</div>
+<div class="award-card">
+<div class="award-name">Sloan Fellow (with Distinction)</div>
+<div class="award-context">London Business School. Leadership &amp; Strategy. MSc conferred 2023.</div>
 </div>
 </div>
 
-<h3 style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:0.6rem;font-weight:600">Key Relationships</h3>
+<h3 style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:2.5px;margin-top:2rem;margin-bottom:0.6rem;font-weight:600">Key Relationships</h3>
 <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
-<span class="tag">US & UK Governments</span>
+<span class="tag">US &amp; UK Governments</span>
 <span class="tag">United Nations</span>
 <span class="tag">The Economist</span>
-<span class="tag">Drucker Foundation</span>
+<span class="tag">Peter Drucker Foundation</span>
 <span class="tag">Thinkers50</span>
 <span class="tag">Fortune 500</span>
 <span class="tag">DIPMF</span>
-</div>
-</div>
 </div>
 </div>
 </section>
